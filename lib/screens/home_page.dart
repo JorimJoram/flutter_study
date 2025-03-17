@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jorim_flutter/provider/AccessTokenProvider.dart';
 import 'package:jorim_flutter/screens/login_page.dart';
+import 'package:jorim_flutter/util/logger.dart';
+import 'package:jorim_flutter/util/theme/colors.dart';
 import 'package:provider/provider.dart';
 import "../services/api_service.dart";
 
@@ -32,7 +34,14 @@ class _HomePageState extends State<HomePage> {
             Text("token: $accessToken"),
             SizedBox(height: 20),
             ElevatedButton(onPressed: _getData, child: Text("get data...")),
-            ElevatedButton(onPressed: goToLogin, child: Text("to Login")),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: jorimGreen,
+                foregroundColor: Colors.blueGrey,
+              ),
+              onPressed: goToLogin,
+              child: Text("to Login"),
+            ),
           ],
         ),
       ),
@@ -40,6 +49,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void goToLogin() {
+    logMessage("로그인 이동 -->  이거 다 출력되는건지 확인 해보겠습니다.", level: LogLevel.INFO);
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => LoginPage()),
