@@ -1,6 +1,7 @@
 # jorim_flutter
 
 A new Flutter project.
+다른거 보다 flutter 퍼센트 올리기 위하여
 
 ## Getting Started
 
