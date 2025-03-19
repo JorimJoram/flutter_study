@@ -43,53 +43,54 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 Center(
                   child: ElevatedButton(
-                    onPressed: _toggleModal,
+                    onPressed: _showModalBottomSheet,
                     child: Text("모달 열기"),
                   ),
                 ),
               ],
             ),
-            AnimatedPositioned(
-              duration: Duration(milliseconds: 500),
-              curve: Curves.easeOutQuad,
-              left: 0,
-              right: 0,
-              bottom: _isModalVisible ? 0 : -300,
-              child: Container(
-                height: 300,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-                ),
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.all(30),
-                    child: Column(
-                      children: [
-                        Text(
-                          "테스트임",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Image.network(
-                          'https://imgnews.pstatic.net/image/108/2025/03/19/0003312543_001_20250319073308427.jpg?type=w647',
-                          height: 200,
-                          width: 200,
-                          fit: BoxFit.cover,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
+    );
+  }
+
+  void _showModalBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          width: MediaQuery.of(context).size.width - 10,
+          height: 300,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Text(
+                    "Test",
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Image.network(
+                    "https://imgnews.pstatic.net/image/076/2025/03/19/2025031901001214200178992_20250319170012109.jpg?type=w647",
+                    width: double.infinity,
+                    height: 300,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
