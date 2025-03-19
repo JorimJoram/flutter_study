@@ -15,3 +15,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## 알게된 명령어
+flutter pub run build_runner build -> 일회성
+flutter pub run build_runner watch -> 계속
+이왕 적는 김에 Dependency 추가하는 명령어
+flutter pub add $lib name

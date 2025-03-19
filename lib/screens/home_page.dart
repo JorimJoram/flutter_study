@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jorim_flutter/provider/AccessTokenProvider.dart';
 import 'package:jorim_flutter/screens/login_page.dart';
+import 'package:jorim_flutter/screens/search_page.dart';
 import 'package:jorim_flutter/util/logger.dart';
 import 'package:jorim_flutter/util/theme/colors.dart';
 import 'package:provider/provider.dart';
@@ -42,17 +43,31 @@ class _HomePageState extends State<HomePage> {
               onPressed: goToLogin,
               child: Text("to Login"),
             ),
+            ElevatedButton(onPressed: goToSearch, child: Text("To Search")),
           ],
         ),
       ),
     );
   }
 
+  void goToSearch() {
+    logMessage("검색화면으로 이동", level: LogLevel.INFO);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SearchPage()),
+    );
+  }
+
   void goToLogin() {
-    logMessage("로그인 이동 -->  이거 다 출력되는건지 확인 해보겠습니다.", level: LogLevel.INFO);
+    logMessage("로그인화면으로 이동", level: LogLevel.INFO);
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => LoginPage()),
     );
   }
 }
+
+/**
+ * 25.03.18
+ * TODO "Error Exception 처리하는 방법에 대해 시도 해볼 것"
+ */
