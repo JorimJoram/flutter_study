@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jorim_flutter/provider/AccessTokenProvider.dart';
 import 'package:jorim_flutter/screens/login_page.dart';
+import 'package:jorim_flutter/screens/payments_widget_example_page.dart';
 import 'package:jorim_flutter/screens/search_page.dart';
 import 'package:jorim_flutter/util/logger.dart';
 import 'package:jorim_flutter/util/theme/colors.dart';
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
               child: Text("to Login"),
             ),
             ElevatedButton(onPressed: goToSearch, child: Text("To Search")),
+            ElevatedButton(onPressed: goToPayment, child: Text("To Payments")),
           ],
         ),
       ),
@@ -65,9 +67,12 @@ class _HomePageState extends State<HomePage> {
       MaterialPageRoute(builder: (context) => LoginPage()),
     );
   }
-}
 
-/**
- * 25.03.18
- * TODO "Error Exception 처리하는 방법에 대해 시도 해볼 것"
- */
+  void goToPayment() {
+    logMessage("토스 결제 화면으로 이동", level: LogLevel.INFO);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PaymentWidgetExamplePage()),
+    );
+  }
+}
