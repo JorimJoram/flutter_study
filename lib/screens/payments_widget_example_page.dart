@@ -1,5 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:jorim_flutter/screens/home_page.dart';
 import 'package:jorim_flutter/util/logger.dart';
 import 'dart:math';
 import 'package:tosspayments_widget_sdk_flutter/model/payment_info.dart';
@@ -109,6 +110,12 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
     );
     if (paymentResult.success != null) {
       logMessage("결제 성공", level: LogLevel.INFO);
+      Fluttertoast.showToast(
+        msg: "결제가 성공적으로 진행되었습니다",
+        toastLength: Toast.LENGTH_LONG,
+        fontSize: 16.0,
+      );
+      goToHome();
     } else if (paymentResult.fail != null) {
       logMessage("결제 실패", level: LogLevel.ERROR);
     }
@@ -124,5 +131,13 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
       length,
       (index) => allowedChars[random.nextInt(allowedChars.length)],
     ).join();
+  }
+
+  void goToHome() {
+    logMessage("로그인화면으로 이동", level: LogLevel.INFO);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
   }
 }
